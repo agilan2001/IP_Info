@@ -1,0 +1,79 @@
+﻿    <!DOCTYPE html>
+    <html>
+        <head>
+            <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Grenze' rel='stylesheet'>
+        </head>
+        <style>
+            body{
+                background-color:black;
+            }
+            .hd{
+                color:#05bdfa;
+                font-family:'Bungee Shade';
+            }
+            .tbl{
+                border-collapse:collapse;
+                font-weight:bold;
+            }
+            .a{
+                text-align:right;
+                border:2px solid #fa071c;
+                border-right:2px solid black;
+                padding:10px;
+                background-color:#0e29f0;
+                color:#f2fa07;
+                font-family:Bungee;
+                font-size:15px;
+            }
+            .b{
+                border:2px solid #0e29f0;
+                border-left:2px solid black;
+                padding:10px;
+                background-color:#fa071c;
+                color:#1dfa05;
+                font-family:Grenze;
+                font-size:20px;
+            }
+        </style>
+        <body>
+        <center>
+        <h1 class="hd">IP INFO</h1>
+        <table class="tbl">
+            <tr>
+                <td class="a">COUNTRY</td>
+                <td class="b" id="coun"></td>
+            </tr>
+            <tr>
+                <td class="a">STATE</td>
+                <td class="b" id="stat"></td>
+            </tr>
+            <tr>
+                <td class="a">CITY</td>
+                <td class="b" id="city"></td>
+            </tr>
+            <tr>
+                <td class="a">SIM SERVICE</td>
+                <td class="b" id="sim"></td>
+            </tr>
+            <tr>
+                <td class="a">IP ADDRESS</td>
+                <td class="b" id="ip"></td>
+            </tr>
+        </table>
+        </center>
+    </span>
+        </body>
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET','https://ipapi.co/json/',false);
+            xhr.send();
+            var res=JSON.parse(xhr.response);
+            document.getElementById("coun").innerHTML=res["country_name"];
+            document.getElementById("stat").innerHTML=res["region"];
+            document.getElementById("city").innerHTML=res["city"]+" (probably 😅)";
+            document.getElementById("sim").innerHTML=res["org"];
+            document.getElementById("ip").innerHTML=res["ip"];
+        </script>
+    </html>
